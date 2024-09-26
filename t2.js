@@ -1,0 +1,10 @@
+let collegeName="Vaagdevi college engg";
+console.log(collegeName.startsWith("Vaagdevi"));
+console.log(collegeName.endsWith("engg"));
+console.log(collegeName.endsWith("Engg"));
+console.log(collegeName.includes("college"));
+console.log(collegeName.includes("vaagdevi"));
+console.log(`I am studying in ${collegeName}`);
+console.log(collegeName.toLowerCase());
+console.log(collegeName.toUpperCase()); 
+console.log(collegeName.repeat(3));

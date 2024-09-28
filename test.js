@@ -1,10 +1,14 @@
 const express=require("express")
 const MongoClient=require("mongoose");
 const dotEnv=require("dotenv");
+const bodyParser=require("body-parser")
+const employeeRoutes=require('./routes/EmployeeRoute')
 const app=express();
 
+app.use(bodyParser.json());
+
 dotEnv.config();
-const PORT=process.env.PORT || 6657;
+const PORT=process.env.PORT || 5555;
 
 MongoClient.connect(process.env.MONGO_URI)
 .then(()=>{
@@ -13,6 +17,8 @@ MongoClient.connect(process.env.MONGO_URI)
 .catch((err)=>{
     console.log(err)
 })
+
+app.use("/employees",employeeRoutes);
 
 app.listen(PORT,()=>{
     console.log(`My port is running on ${PORT} number`)

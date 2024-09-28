@@ -1,22 +1,23 @@
-const mongoose=require('mongoose')
+const mongoose=require('mongoose');
 
 const employeeSchema=new mongoose.Schema({
-    "name":{
+    name:{
         type:String,
         required:true
     },
-    "email":{
+    email:{
         type:String,
         required:true
     },
-    "phone":{
+    phone:{
         type:Number,
         default:false
     },
-    "city":{
-        type:String,
-        required:true
+    city:{
+        type: String,
+        default:false
     }
 
 })
 module.exports=mongoose.model("Employee",employeeSchema);
+

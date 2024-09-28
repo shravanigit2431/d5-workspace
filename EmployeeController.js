@@ -1,9 +1,8 @@
 const Employee=require('../models/Employee')
 
-//create or POST
 const createEmployee=async(req,res)=>{
     try{
-        const{name,email,phone,city}=req.body
+        const {name,email,phone,city}=req.body
         const employee=new Employee({
             name,
             email,
@@ -11,10 +10,23 @@ const createEmployee=async(req,res)=>{
             city
         })
         await employee.save();
-        res.status(201).json({message:"Data insertion is done"})
-    }
-    catch(error){
+        res.status(201).json({message:"Employee data inserted successfully"})
+    }catch(error){
         console.log(error);
+        res.status(500).json({message:'server error'})
     }
 }
-module.exports={createEmployee}
+
+const getEmployees=async(req,res)=>{
+    try{
+        const employees=await Employee.find();
+        res.status(201).json(employees);
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json({message:"server error"});
+    }
+}
+
+    
+module.exports={createEmployee, getEmployees};
